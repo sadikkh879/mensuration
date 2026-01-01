@@ -8,19 +8,19 @@
 <body>
 
 <div class="container">
-    <h1>Triangle Area Visualizer</h1>
+    <h1>Triangle Area Visualizer <br>ত্রিভুজের ক্ষেত্রফল নির্ণয় চিত্র</h1>
 
     <!-- ===================== -->
     <!-- 1. BASE & HEIGHT -->
     <!-- ===================== -->
     <section class="card">
-        <h2>Area Using Base & Height</h2>
+        <h2>Area Using Base & Height <br>উচ্চতা এবং ভুমি দেওয়া থাকলে</h2>
 
         <div class="controls">
-            <label>Base: <span id="baseVal">100</span> cm</label>
+            <label>Base/ভুমি: <span id="baseVal">100</span> cm</label>
             <input type="range" id="baseInput" min="50" max="300" value="100">
 
-            <label>Height: <span id="heightVal">100</span> cm</label>
+            <label>Height/উচ্চতা: <span id="heightVal">100</span> cm</label>
             <input type="range" id="heightInput" min="50" max="250" value="100">
         </div>
 
@@ -37,16 +37,16 @@
     <!-- 2. TWO SIDES & ANGLE -->
     <!-- ===================== -->
     <section class="card">
-        <h2>Area Using Two Sides & Angle</h2>
+        <h2>Area Using Two Sides & Angle <br>দুই বাহু এবং এদের অন্তর্ভূক্ত কোণ দেওয়া থাকলে</h2>
 
         <div class="controls">
-            <label>Side A (a): <span id="sideAVal">150</span> cm</label>
+            <label>Side A/এক বাহু (a): <span id="sideAVal">150</span> cm</label>
             <input type="range" id="sideAInput" min="50" max="250" value="150">
 
-            <label>Side B (b): <span id="sideBVal">150</span> cm</label>
+            <label>Side B/অপর বাহু (b): <span id="sideBVal">150</span> cm</label>
             <input type="range" id="sideBInput" min="50" max="250" value="150">
 
-            <label>Angle (θ): <span id="angleVal">60</span>°</label>
+            <label>Angle/অন্তর্ভূক্ত কোণ (θ): <span id="angleVal">60</span>°</label>
             <input type="range" id="angleInput" min="5" max="175" value="60">
         </div>
 
@@ -62,16 +62,16 @@
 
     <!-- Area Using Three Sides -->
     <section class="card">
-    <h2>Area Using Three Sides (Heron's Formula)</h2>
+    <h2>Area Using Three Sides (Heron's Formula)<br>ত্রিভুজের তিন বাহু দেওয়া থাকলে</h2>
 
     <div class="controls">
-        <label>Side a: <span id="sideaVal">150</span> cm</label>
+        <label>Side a/বাহু ১: <span id="sideaVal">150</span> cm</label>
         <input type="range" id="sideaInput" min="50" max="250" value="150">
 
-        <label>Side b: <span id="sidebVal">130</span> cm</label>
+        <label>Side b/ বাহু ২: <span id="sidebVal">130</span> cm</label>
         <input type="range" id="sidebInput" min="50" max="250" value="130">
 
-        <label>Side c: <span id="sidecVal">170</span> cm</label>
+        <label>Side c/বাহু ৩: <span id="sidecVal">170</span> cm</label>
         <input type="range" id="sidecInput" min="50" max="250" value="170">
     </div>
 
@@ -89,10 +89,10 @@
 </section>
 
 <section class="card">
-    <h2>Area of an Equilateral Triangle</h2>
+    <h2>Area of an Equilateral Triangle <br>সমবাহু ত্রিভুজের ক্ষেত্রফল</h2>
 
     <div class="controls">
-        <label>Side length (a): <span id="eqSideVal">150</span> cm</label>
+        <label>Side length/বাহুর দৈর্ঘ্য(a): <span id="eqSideVal">150</span> cm</label>
         <input type="range" id="eqSideInput" min="50" max="250" value="150">
     </div>
 
@@ -109,13 +109,13 @@
 </section>
 
 <section class="card">
-    <h2>Area of an Isosceles Triangle</h2>
+    <h2>Area of an Isosceles Triangle <br>সমদ্বিবাহু ত্রিভুজের ক্ষেত্রফল</h2>
 
     <div class="controls">
-        <label>Equal side (a): <span id="isoSideVal">180</span> cm</label>
+        <label>Equal sid/উভয় বাহু(a): <span id="isoSideVal">180</span> cm</label>
         <input type="range" id="isoSideInput" min="80" max="250" value="180">
 
-        <label>Base (b): <span id="isoBaseVal">160</span> cm</label>
+        <label>Base/অপর বাহু অথবা এক্ষেত্রে ভুমি (b): <span id="isoBaseVal">160</span> cm</label>
         <input type="range" id="isoBaseInput" min="50" max="300" value="160">
     </div>
 
