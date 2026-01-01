@@ -1,4 +1,29 @@
 const data = {
+
+    nostril:{
+        name: "Nostril",
+        image: "https://img.freepik.com/premium-photo/comprehensive-anatomical-illustrations-human-nose-nasal-structure_984027-201762.jpg",
+        desc: "The trachea (windpipe) carries air from the nose and mouth to the lungs."
+    },
+
+        nasalCavity:{
+        name: "Nasal Cavity",
+        image: "https://media.sciencephoto.com/image/f0164882/800wm/F0164882-Human_nasal_cavity,_illustration.jpg",
+        desc: "The trachea (windpipe) carries air from the nose and mouth to the lungs."
+    },
+
+        pharynx:{
+        name: "Pharynx",
+        image: "https://as2.ftcdn.net/v2/jpg/05/75/74/51/1000_F_575745121_3bzwHyLlCFvFhfXmcreJWoy6nAOO2zIm.jpg",
+        desc: "The trachea (windpipe) carries air from the nose and mouth to the lungs."
+    },
+
+        larynx:{
+        name: "Larynx",
+        image: "https://as1.ftcdn.net/v2/jpg/05/18/24/54/1000_F_518245446_jCEP0A91qcKUs2SXkLRAOpzRtVcfoala.jpg",
+        desc: "The trachea (windpipe) carries air from the nose and mouth to the lungs."
+    },
+
     trachea: {
         name: "Trachea",
         image: "https://img.freepik.com/premium-photo/human-trachea-anatomy-3d-illustration_130714-1869.jpg",

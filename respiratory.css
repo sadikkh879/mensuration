@@ -31,10 +31,10 @@ h1 {
     align-items: flex-start;
 }
 
-/* .hotspot {
+.hotspot {
     background: rgba(255, 0, 0, 0.25);
     border: 2px solid red;
-} */
+}
 
 /* VIEWER */
 .viewer {
@@ -51,11 +51,11 @@ h1 {
 }
 
 /* HOTSPOTS */
-.hotspot {
+/* .hotspot {
     position: absolute;
     border-radius: 50%;
     cursor: pointer;
-}
+} */
 
 .hotspot:hover {
     outline: 3px solid #2ecc71;
@@ -63,11 +63,40 @@ h1 {
 }
 
 /* Approximate positioning */
-.trachea {
+
+.nostril{
+    top: 22.5%;
+    left: 59%;
+    width: 8%;
+    height: 5%;
+}
+
+.nasalCavity{
+    top: 22.5%;
+    left: 52%;
+    width: 8%;
+    height: 5%;
+}
+
+.pharynx {
     top: 35%;
     left: 46%;
     width: 8%;
-    height: 20%;
+    height: 5%;
+}
+
+.larynx {
+    top: 40%;
+    left: 46%;
+    width: 8%;
+    height: 5%;
+}
+
+.trachea {
+    top: 45%;
+    left: 46%;
+    width: 8%;
+    height: 12%;
 }
 
 /* .lungs {
