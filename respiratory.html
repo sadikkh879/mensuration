@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Human Respiratory System – Interactive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Human Respiratory System</h1>
+    <p class="subtitle">Hover to identify · Click to explore</p>
+
+    <div class="content">
+        <!-- MAIN IMAGE -->
+        <div class="viewer">
+            <img src="https://img.freepik.com/premium-vector/human-respiratory-system-vector-illustration_951778-47139.jpg"
+                 alt="Human Respiratory System">
+
+            <!-- HOTSPOTS -->
+            <div class="hotspot trachea" data-part="trachea"></div>
+            <div class="hotspot lungs" data-part="lungs"></div>
+            <div class="hotspot bronchi" data-part="bronchi"></div>
+            <div class="hotspot alveoli" data-part="alveoli"></div>
+            <div class="hotspot diaphragm" data-part="diaphragm"></div>
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="info-panel">
+            <h2 id="partName">Human Respiratory System</h2>
+            <img id="partImage"
+                 src="https://img.freepik.com/premium-vector/human-respiratory-system-vector-illustration_951778-47139.jpg">
+            <p id="partDesc">
+                The human respiratory system helps us breathe and exchange oxygen and carbon dioxide.
+                Hover over the diagram and click on a part to learn more.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="respiratory.js"></script>
+</body>
+</html>
