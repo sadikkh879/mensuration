@@ -11,17 +11,17 @@ const data = {
     },
     bronchi: {
         name: "Bronchi",
-        image: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Bronchial_tree.svg",
+        image: "https://c8.alamy.com/comp/DA5WBF/digital-medical-illustration-depicting-the-bronchi-and-trachea-of-DA5WBF.jpg",
         desc: "Bronchi are branches of the trachea that conduct air into each lung."
     },
     alveoli: {
         name: "Alveoli",
-        image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Alveolus_diagram.svg",
+        image: "https://st.focusedcollection.com/13422768/i/650/focused_169530678-stock-photo-human-alveoli-anatomy.jpg",
         desc: "Alveoli are tiny air sacs where the exchange of oxygen and carbon dioxide occurs."
     },
     diaphragm: {
         name: "Diaphragm",
-        image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Diaphragm_anatomy.svg",
+        image: "https://c8.alamy.com/comp/2RB7THG/human-diaphragm-anatomy-for-medical-concept-3d-illustration-2RB7THG.jpg",
         desc: "The diaphragm is a muscle that helps in breathing by changing the volume of the chest cavity."
     }
 };
