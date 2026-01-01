@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Triangle Area Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Triangle Area Visualizer</h1>
+
+    <!-- ===================== -->
+    <!-- 1. BASE & HEIGHT -->
+    <!-- ===================== -->
+    <section class="card">
+        <h2>Area Using Base & Height</h2>
+
+        <div class="controls">
+            <label>Base: <span id="baseVal">100</span> cm</label>
+            <input type="range" id="baseInput" min="50" max="300" value="100">
+
+            <label>Height: <span id="heightVal">100</span> cm</label>
+            <input type="range" id="heightInput" min="50" max="250" value="100">
+        </div>
+
+        <canvas id="triangleCanvas" width="420" height="300"></canvas>
+
+        <div class="result">
+            <p>Formula: Area = ½ × Base × Height</p>
+            <p>Triangle Area = ½ × <strong><span id="baseText">100</span></strong> × <strong><span id="heightText">100</span></strong></p>
+            <h3>Calculated Area: <span id="areaResult1">5000</span> units²</h3>
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- 2. TWO SIDES & ANGLE -->
+    <!-- ===================== -->
+    <section class="card">
+        <h2>Area Using Two Sides & Angle</h2>
+
+        <div class="controls">
+            <label>Side A (a): <span id="sideAVal">150</span> cm</label>
+            <input type="range" id="sideAInput" min="50" max="250" value="150">
+
+            <label>Side B (b): <span id="sideBVal">150</span> cm</label>
+            <input type="range" id="sideBInput" min="50" max="250" value="150">
+
+            <label>Angle (θ): <span id="angleVal">60</span>°</label>
+            <input type="range" id="angleInput" min="5" max="175" value="60">
+        </div>
+
+        <canvas id="triangleCanvas1" width="500" height="380"></canvas>
+
+        <div class="result">
+            <p>Formula: Area = ½ × a × b × sin(θ)</p>
+            <p>Area= ½ × <span id="twoSidesA">150</span> × <span id="twoSidesB">150</span> × sin(<span id="twoSidesAngle">θ</span>)</p>
+            <h3>Calculated Area: <span id="areaResult2">0</span> units²</h3>
+        </div>
+    </section>
+
+    <section class="card">
+    <h2>Area Using Three Sides (Heron's Formula)</h2>
+
+    <div class="controls">
+        <label>Side a: <span id="sideaVal">150</span> cm</label>
+        <input type="range" id="sideaInput" min="50" max="250" value="150">
+
+        <label>Side b: <span id="sidebVal">130</span> cm</label>
+        <input type="range" id="sidebInput" min="50" max="250" value="130">
+
+        <label>Side c: <span id="sidecVal">170</span> cm</label>
+        <input type="range" id="sidecInput" min="50" max="250" value="170">
+    </div>
+
+    <canvas id="triangleCanvas2" width="500" height="380"></canvas>
+
+    <div class="result">
+        <p>Formula:</p>
+        <p>
+            s = (a + b + c) / 2 <br>
+            Area = √[ s(s − a)(s − b)(s − c) ]
+        </p>
+        <h3>Calculated Area: <span id="areaResult3">0</span> units²</h3>
+    </div>
+</section>
+
+<section class="card">
+    <h2>Area of an Equilateral Triangle</h2>
+
+    <div class="controls">
+        <label>Side length (a): <span id="eqSideVal">150</span> cm</label>
+        <input type="range" id="eqSideInput" min="50" max="250" value="150">
+    </div>
+
+    <canvas id="equilateralCanvas" width="500" height="380"></canvas>
+
+    <div class="result">
+        <p>Formula:</p>
+        <p>
+            Height = (√3 / 2) × a <br>
+            Area = (√3 / 4) × a²
+        </p>
+        <h3>Calculated Area: <span id="eqAreaResult">0</span> units²</h3>
+    </div>
+</section>
+
+<section class="card">
+    <h2>Area of an Isosceles Triangle</h2>
+
+    <div class="controls">
+        <label>Equal side (a): <span id="isoSideVal">180</span> cm</label>
+        <input type="range" id="isoSideInput" min="80" max="250" value="180">
+
+        <label>Base (b): <span id="isoBaseVal">160</span> cm</label>
+        <input type="range" id="isoBaseInput" min="50" max="300" value="160">
+    </div>
+
+    <canvas id="isoscelesCanvas" width="500" height="380"></canvas>
+
+    <div class="result">
+        <p>Formula:</p>
+        <p>
+            Height = √(4a² − b²) / 2 <br>
+            Area = (b / 4) × √(4a² − b²)
+        </p>
+        <h3>Calculated Area: <span id="isoAreaResult">0</span> units²</h3>
+    </div>
+</section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
