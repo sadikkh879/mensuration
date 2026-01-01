@@ -97,6 +97,7 @@ const ctx2 = canvas2.getContext("2d");
 const sideaInput = document.getElementById("sideaInput");
 const sidebInput = document.getElementById("sidebInput");
 const sidecInput = document.getElementById("sidecInput");
+//const threeSidesS= document.getElementById("threeSidesS");
 
 function drawThreeSides() {
     const a = +sideaInput.value;
@@ -116,6 +117,7 @@ function drawThreeSides() {
 
     // Heron's formula
     const s = (a + b + c) / 2;
+    document.getElementById("threeSidesS").innerText= s;
     const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
     document.getElementById("areaResult3").innerText = area.toFixed(2);
 
