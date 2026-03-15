@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Square Visualizer</title>
+    <style>
+        :root {
+            --color-a2: #3498db; /* Blue */
+            --color-ab: #9b59b6; /* Purple */
+            --color-b2: #e74c3c; /* Red */
+        }
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f4f7f6; }
+        .controls { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center; }
+        .input-group { margin: 10px 0; }
+        input { width: 60px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* The Square Container */
+        #square-container {
+            width: 300px;
+            height: 300px;
+            display: grid;
+            border: 2px solid #333;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .box { display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .a2 { background-color: var(--color-a2); }
+        .ab { background-color: var(--color-ab); }
+        .b2 { background-color: var(--color-b2); }
+
+        .result-panel { margin-top: 20px; text-align: left; background: white; padding: 15px; border-radius: 8px; width: 320px; }
+        .legend { display: flex; gap: 10px; margin-top: 10px; font-size: 12px; }
+        .dot { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <h3>Geometric Identity Visualizer</h3>
+        <div class="input-group">
+            <label>Formula: </label>
+            <select id="formula-select">
+                <option value="plus"> (a + b)² </option>
+                <option value="minus"> (a - b)² </option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Value a: </label> <input type="number" id="valA" value="7" min="1">
+            <label>Value b: </label> <input type="number" id="valB" value="3" min="1">
+        </div>
+    </div>
+
+    <div id="square-container">
+        </div>
+
+    <div class="result-panel">
+        <div id="math-display"></div>
+        <div class="legend">
+            <span><span class="dot a2"></span> a²</span>
+            <span><span class="dot ab"></span> ab</span>
+            <span><span class="dot b2"></span> b²</span>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('square-container');
+        const valA = document.getElementById('valA');
+        const valB = document.getElementById('valB');
+        const formulaSelect = document.getElementById('formula-select');
+        const mathDisplay = document.getElementById('math-display');
+
+        function update() {
+            let a = parseFloat(valA.value) || 0;
+            let b = parseFloat(valB.value) || 0;
+            const mode = formulaSelect.value;
+
+            // Prevent logic errors for (a-b) where b > a
+            if (mode === 'minus' && b >= a) {
+                mathDisplay.innerHTML = "<b style='color:red'>Error: 'a' must be larger than 'b'</b>";
+                return;
+            }
+
+            // Calculate Grid Proportions
+            // For (a+b), the total side is a+b
+            // For (a-b), we visualize a^2 and highlight the (a-b)^2 section
+            const total = (mode === 'plus') ? (a + b) : a;
+            const percA = (a / total) * 100;
+            const percB = (b / total) * 100;
+            const percAmB = ((a - b) / total) * 100;
+
+            container.innerHTML = ''; // Clear previous
+
+            if (mode === 'plus') {
+                container.style.gridTemplateColumns = `${percA}% ${percB}%`;
+                container.style.gridTemplateRows = `${percA}% ${percB}%`;
+
+                createBox('a²', 'a2'); createBox('ab', 'ab');
+                createBox('ab', 'ab'); createBox('b²', 'b2');
+
+                const totalVal = Math.pow(a + b, 2);
+                mathDisplay.innerHTML = `
+                    <b>Formula: $(a + b)^2 = a^2 + 2ab + b^2$</b><br>
+                    $${a}^2 + 2(${a})(${b}) + ${b}^2$<br>
+                    $= ${a*a} + ${2*a*b} + ${b*b}$<br>
+                    <b>Total Area = ${totalVal}</b>
+                `;
+            } else {
+                // (a-b)^2 visualization
+                container.style.gridTemplateColumns = `${percAmB}% ${percB}%`;
+                container.style.gridTemplateRows = `${percAmB}% ${percB}%`;
+
+                createBox('(a-b)²', 'a2'); createBox('b(a-b)', 'ab');
+                createBox('b(a-b)', 'ab'); createBox('b²', 'b2');
+
+                const totalVal = Math.pow(a - b, 2);
+                mathDisplay.innerHTML = `
+                    <b>Formula: $(a - b)^2 = a^2 - 2ab + b^2$</b><br>
+                    $${a}^2 - 2(${a})(${b}) + ${b}^2$<br>
+                    $= ${a*a} - ${2*a*b} + ${b*b}$<br>
+                    <b>Total Area = ${totalVal}</b>
+                `;
+            }
+        }
+
+        function createBox(label, className) {
+            const div = document.createElement('div');
+            div.className = `box ${className}`;
+            div.innerText = label;
+            container.appendChild(div);
+        }
+
+        [valA, valB, formulaSelect].forEach(el => el.addEventListener('input', update));
+        update(); // Initial call
+    </script>
+</body>
+</html>

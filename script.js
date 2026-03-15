@@ -110,7 +110,7 @@ function drawThreeSides() {
 
     // Triangle inequality check
     if (a + b <= c || a + c <= b || b + c <= a) {
-        document.getElementById("areaResult3").innerText = "Invalid triangle";
+        document.getElementById("areaResult3").innerText = "Invalid triangle!!";
         ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
         return;
     }
