@@ -1,137 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebra Square Visualizer</title>
+    <title>বীজগণিতীয় সূত্র ও জ্যামিতিক প্রদর্শনী</title>
     <style>
         :root {
-            --color-a2: #3498db; /* Blue */
-            --color-ab: #9b59b6; /* Purple */
-            --color-b2: #e74c3c; /* Red */
+            --color-a2: #3498db;
+            --color-ab: #9b59b6;
+            --color-b2: #e74c3c;
+            --bg-color: #f8f9fa;
         }
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f4f7f6; }
-        .controls { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center; }
-        .input-group { margin: 10px 0; }
-        input { width: 60px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: auto; }
         
-        /* The Square Container */
-        #square-container {
-            width: 300px;
-            height: 300px;
-            display: grid;
-            border: 2px solid #333;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        .box { display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        /* সূত্র চার্ট স্টাইল */
+        .chart-section { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .chart-title { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .formula-card { padding: 15px; border-radius: 8px; color: white; text-align: center; transition: transform 0.2s; }
+        .formula-card:hover { transform: scale(1.03); }
+        .f1 { background: #1abc9c; } .f2 { background: #3498db; }
+        .c1 { background: #9b59b6; } .c2 { background: #e67e22; }
+        .c3 { background: #e74c3c; } .c4 { background: #2c3e50; }
+        .c5 { background: #27ae60; }
+
+        /* ভিজ্যুয়ালাইজার স্টাইল */
+        .visualizer-section { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .controls { flex: 1; min-width: 280px; }
+        .visual-area { flex: 1; min-width: 320px; display: flex; flex-direction: column; align-items: center; }
+        
+        #square-container { width: 250px; height: 250px; display: grid; border: 3px solid #333; transition: 0.3s; background: #fff; }
+        .box { display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); font-size: 14px; }
         .a2 { background-color: var(--color-a2); }
         .ab { background-color: var(--color-ab); }
         .b2 { background-color: var(--color-b2); }
 
-        .result-panel { margin-top: 20px; text-align: left; background: white; padding: 15px; border-radius: 8px; width: 320px; }
-        .legend { display: flex; gap: 10px; margin-top: 10px; font-size: 12px; }
-        .dot { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+        input, select { padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin: 5px 0; width: 100%; }
+        .math-result { margin-top: 20px; font-size: 1.1em; background: #fdfdfd; padding: 10px; border-left: 5px solid #3498db; }
     </style>
 </head>
 <body>
 
-    <div class="controls">
-        <h3>Geometric Identity Visualizer</h3>
-        <div class="input-group">
-            <label>Formula: </label>
+<div class="container">
+    <div class="chart-section">
+        <h2 class="chart-title">বর্গ সংবলিত সূত্রাবলি ও অনুসিদ্ধান্ত</h2>
+        <div class="formula-grid">
+            <div class="formula-card f1"><strong>সূত্র ১:</strong> (a + b)² = a² + 2ab + b²</div>
+            <div class="formula-card f2"><strong>সূত্র ২:</strong> (a - b)² = a² - 2ab + b²</div>
+            <div class="formula-card c1"><strong>অনুসিদ্ধান্ত ১:</strong> a² + b² = (a+b)² - 2ab</div>
+            <div class="formula-card c2"><strong>অনুসিদ্ধান্ত ২:</strong> a² + b² = (a-b)² + 2ab</div>
+            <div class="formula-card c3"><strong>অনুসিদ্ধান্ত ৩:</strong> (a+b)² = (a-b)² + 4ab</div>
+            <div class="formula-card c4"><strong>অনুসিদ্ধান্ত ৪:</strong> (a-b)² = (a+b)² - 4ab</div>
+            <div class="formula-card c5"><strong>অনুসিদ্ধান্ত ৫:</strong> a² + b² = {(a+b)² + (a-b)²} / 2</div>
+        </div>
+    </div>
+
+    <div class="visualizer-section">
+        <div class="controls">
+            <h3>জ্যামিতিক রূপান্তর</h3>
+            <label>সূত্র নির্বাচন করুন:</label>
             <select id="formula-select">
                 <option value="plus"> (a + b)² </option>
                 <option value="minus"> (a - b)² </option>
             </select>
-        </div>
-        <div class="input-group">
-            <label>Value a: </label> <input type="number" id="valA" value="7" min="1">
-            <label>Value b: </label> <input type="number" id="valB" value="3" min="1">
-        </div>
-    </div>
-
-    <div id="square-container">
+            <label>a এর মান:</label> <input type="number" id="valA" value="7" min="1">
+            <label>b এর মান:</label> <input type="number" id="valB" value="3" min="1">
+            <div class="math-result" id="math-display"></div>
         </div>
 
-    <div class="result-panel">
-        <div id="math-display"></div>
-        <div class="legend">
-            <span><span class="dot a2"></span> a²</span>
-            <span><span class="dot ab"></span> ab</span>
-            <span><span class="dot b2"></span> b²</span>
+        <div class="visual-area">
+            <div id="square-container"></div>
+            <p><i>বর্গের বিভিন্ন অংশের রঙের মাধ্যমে ক্ষেত্রফল প্রদর্শন</i></p>
         </div>
     </div>
+</div>
 
-    <script>
-        const container = document.getElementById('square-container');
-        const valA = document.getElementById('valA');
-        const valB = document.getElementById('valB');
-        const formulaSelect = document.getElementById('formula-select');
-        const mathDisplay = document.getElementById('math-display');
+<script>
+    const container = document.getElementById('square-container');
+    const valA = document.getElementById('valA');
+    const valB = document.getElementById('valB');
+    const formulaSelect = document.getElementById('formula-select');
+    const mathDisplay = document.getElementById('math-display');
 
-        function update() {
-            let a = parseFloat(valA.value) || 0;
-            let b = parseFloat(valB.value) || 0;
-            const mode = formulaSelect.value;
+    function update() {
+        let a = parseFloat(valA.value) || 0;
+        let b = parseFloat(valB.value) || 0;
+        const mode = formulaSelect.value;
 
-            // Prevent logic errors for (a-b) where b > a
-            if (mode === 'minus' && b >= a) {
-                mathDisplay.innerHTML = "<b style='color:red'>Error: 'a' must be larger than 'b'</b>";
-                return;
-            }
-
-            // Calculate Grid Proportions
-            // For (a+b), the total side is a+b
-            // For (a-b), we visualize a^2 and highlight the (a-b)^2 section
-            const total = (mode === 'plus') ? (a + b) : a;
-            const percA = (a / total) * 100;
-            const percB = (b / total) * 100;
-            const percAmB = ((a - b) / total) * 100;
-
-            container.innerHTML = ''; // Clear previous
-
-            if (mode === 'plus') {
-                container.style.gridTemplateColumns = `${percA}% ${percB}%`;
-                container.style.gridTemplateRows = `${percA}% ${percB}%`;
-
-                createBox('a²', 'a2'); createBox('ab', 'ab');
-                createBox('ab', 'ab'); createBox('b²', 'b2');
-
-                const totalVal = Math.pow(a + b, 2);
-                mathDisplay.innerHTML = `
-                    <b>Formula: (a + b)^2 = a^2 + 2ab + b^2</b><br>
-                    ${a}^2 + 2(${a})(${b}) + ${b}^2<br>
-                    = ${a*a} + ${2*a*b} + ${b*b}<br>
-                    <b>Total Area = ${totalVal}</b>
-                `;
-            } else {
-                // (a-b)^2 visualization
-                container.style.gridTemplateColumns = `${percAmB}% ${percB}%`;
-                container.style.gridTemplateRows = `${percAmB}% ${percB}%`;
-
-                createBox('(a-b)²', 'a2'); createBox('b(a-b)', 'ab');
-                createBox('b(a-b)', 'ab'); createBox('b²', 'b2');
-
-                const totalVal = Math.pow(a - b, 2);
-                mathDisplay.innerHTML = `
-                    <b>Formula: $(a - b)^2 = a^2 - 2ab + b^2$</b><br>
-                    $${a}^2 - 2(${a})(${b}) + ${b}^2$<br>
-                    $= ${a*a} - ${2*a*b} + ${b*b}$<br>
-                    <b>Total Area = ${totalVal}</b>
-                `;
-            }
+        if (mode === 'minus' && b >= a) {
+            mathDisplay.innerHTML = "<span style='color:red'>ত্রুটি: 'a' অবশ্যই 'b' থেকে বড় হতে হবে</span>";
+            return;
         }
 
-        function createBox(label, className) {
-            const div = document.createElement('div');
-            div.className = `box ${className}`;
-            div.innerText = label;
-            container.appendChild(div);
-        }
+        const total = (mode === 'plus') ? (a + b) : a;
+        const percA = (a / total) * 100;
+        const percB = (b / total) * 100;
+        const percAmB = ((a - b) / total) * 100;
 
-        [valA, valB, formulaSelect].forEach(el => el.addEventListener('input', update));
-        update(); // Initial call
-    </script>
+        container.innerHTML = '';
+
+        if (mode === 'plus') {
+            container.style.gridTemplateColumns = `${percA}% ${percB}%`;
+            container.style.gridTemplateRows = `${percA}% ${percB}%`;
+            createBox('a²', 'a2'); createBox('ab', 'ab');
+            createBox('ab', 'ab'); createBox('b²', 'b2');
+            
+            mathDisplay.innerHTML = `
+                <strong>${a}² + 2(${a})(${b}) + ${b}²</strong><br>
+                = ${a*a} + ${2*a*b} + ${b*b}<br>
+                <strong>মোট ক্ষেত্রফল: ${Math.pow(a+b, 2)}</strong>
+            `;
+        } else {
+            container.style.gridTemplateColumns = `${percAmB}% ${percB}%`;
+            container.style.gridTemplateRows = `${percAmB}% ${percB}%`;
+            createBox('(a-b)²', 'a2'); createBox('ab', 'ab');
+            createBox('ab', 'ab'); createBox('b²', 'b2');
+
+            mathDisplay.innerHTML = `
+                <strong>${a}² - 2(${a})(${b}) + ${b}²</strong><br>
+                = ${a*a} - ${2*a*b} + ${b*b}<br>
+                <strong>(a-b)² এর মান: ${Math.pow(a-b, 2)}</strong>
+            `;
+        }
+    }
+
+    function createBox(label, className) {
+        const div = document.createElement('div');
+        div.className = `box ${className}`;
+        div.innerText = label;
+        container.appendChild(div);
+    }
+
+    [valA, valB, formulaSelect].forEach(el => el.addEventListener('input', update));
+    update();
+</script>
+
 </body>
 </html>
